@@ -1,0 +1,30 @@
+[
+  {
+    "id": "F01",
+    "description": "Correct total",
+    "depends_on": [],
+    "acceptance": [
+      "total([2, 3]) equals 5"
+    ],
+    "status": "blocked",
+    "passes": false,
+    "evidence": [
+      {
+        "criterion": "total([2, 3]) equals 5",
+        "command": "python3 -m unittest -v",
+        "result": "pass",
+        "revision": "old-missing-revision",
+        "report": "hive/reports/missing.md"
+      },
+      {
+        "criterion": "total([2, 3]) equals 5",
+        "command": "python3 -m unittest -v",
+        "result": "FAIL: AssertionError 6 != 5 (exit 1); total.py returns sum(values) + 1. Prior pass evidence above is stale/unverifiable.",
+        "revision": "8873534 (HEAD, untracked hive/ only)",
+        "report": "hive/progress.md"
+      }
+    ],
+    "blocked_reason": "Reopened by audit 2026-10-14: acceptance test fails at HEAD 8873534 and the earlier pass cites a nonexistent revision and report. All 3 repair rounds are used; further source repair needs a user decision and source changes are not authorized in this session.",
+    "repair_rounds_used": 3
+  }
+]

@@ -6,7 +6,7 @@ A portable skill for turning a product idea into small, verified increments. You
 
 Use it with one coding agent or a multi-agent harness. No framework, API key, paid service, or runtime dependency is required to read the skill. The optional setup command uses Python 3.9+.
 
-> Early release. Setup tooling and a synthetic backend delivery have been tested, including independent review. Full cross-harness delivery quality is not yet benchmarked. See [validation results and limitations](evals/2026-10-13.md). “Harness-agnostic” means portable instructions and state, not identical capabilities in every assistant.
+> Early release. Tested with Claude Code 2.1.284 and Codex desktop on synthetic setup, regression, handoff and resume scenarios. Native Claude `/bdd` activation and live Sonnet/Opus selection were verified. See [results, fixes and remaining limits](evals/2026-10-14.md). Portability does not mean identical capabilities in every harness.
 
 ## Start in three steps
 
@@ -99,7 +99,9 @@ The package follows the [Agent Skills format](https://agentskills.io/specificati
 | A single-agent setup | Build sequentially, then use a fresh session or a human for independent review |
 | Chat-only assistant | Supply the skill and relevant files; run checks and persist state yourself |
 
-These are capability-based usage paths, not claims that every named product/version has been tested. See [portability and limitations](references/portability.md).
+Claude Code and Codex desktop have been exercised in bounded cross-harness tests; the other named products remain untested. See [the validation report](evals/2026-10-14.md) and [native Claude setup / portability](references/portability.md).
+
+For native Claude Code use, clone into an unused `.claude/skills/bdd` directory inside your project, start a new normal session, and invoke `/bdd`. Restricted or safe modes can omit custom skills; use the explicit-file prompt when discovery is unavailable.
 
 ## Continue tomorrow, or switch assistants
 
@@ -136,6 +138,14 @@ Start with the generated config. Default to one active feature and one worker; i
 
 The skill works with an existing codebase. It does not replace project rules, reset files, require a new tech stack, or grant deployment permissions.
 
+Before resuming an existing hive, check its portable state:
+
+```sh
+python3 /absolute/path/to/bdd/scripts/validate_hive.py /absolute/path/to/your-project
+```
+
+Validation reports structural issues without changing files. Preserve originals when correcting state; a valid file is not proof that its approval or verification claims are true.
+
 ## When something blocks
 
 | Situation | Expected behavior |
@@ -155,7 +165,7 @@ Run the dependency-free setup tests:
 python3 -m unittest discover -s tests -v
 ```
 
-The 11 tests cover safe initialization, existing-state refusal, invalid targets, concurrent initialization and optional bee naming. They do not establish the quality of an LLM's decisions. [Behavioral evaluation scenarios](evals/scenarios.md) define the separate checks needed for a harness compatibility claim.
+The 19 tests cover safe initialization, optional bee naming, portable state shape, dependency consistency, evidence requirements, malformed JSON and mutation-free validation. They do not establish the quality of an LLM's decisions. [Behavioral evaluation scenarios](evals/scenarios.md) define the separate checks needed for a harness compatibility claim.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for changes and reporting. Keep the core portable, use synthetic examples, and include observed evidence for any compatibility claim.
 

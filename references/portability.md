@@ -25,3 +25,15 @@ Replace the path with your clone location:
 > Read this project's instructions and `hive/progress.md`, `hive/features.json`, `hive/approvals.md`, and `hive/config.json`, then read `/path/to/bdd/SKILL.md`. Reconcile the working tree, active workers and reports. Resume the next authorized action without repeating approved work or inventing missing verification.
 
 Copy or attach the linked references if the host cannot open relative files. Never overwrite global `AGENTS.md`, `CLAUDE.md`, or editor rules to install this package. A project may add a short pointer to the skill by explicit choice.
+
+## Claude Code native loading (tested)
+
+From your project directory, install into an unused directory:
+
+```sh
+git clone https://github.com/HassanOkashaa/bdd.git .claude/skills/bdd
+```
+
+Start a new normal Claude Code session and invoke `/bdd`. In the tested CLI 2.1.284, the normal loader discovered the project skill; the restricted test invocation did not. Safe mode also disables custom skills. If the host disables discovery, use the explicit-file prompt above and disclose that you are not using native activation. Do not overwrite an existing skill folder or weaken host permissions to enable discovery.
+
+The project path and slash invocation follow the [official Claude Code skill documentation](https://code.claude.com/docs/en/skills). Other harnesses may use different install paths; the explicit-file route remains portable.

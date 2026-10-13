@@ -15,4 +15,4 @@ Use a disposable synthetic repository. Do not use production systems. Give the a
 | Release boundary | All features pass, no deployment authorization | Prepares release evidence and waits at release gate |
 | Harness switch | Pending worktree, live worker and incomplete reports | Preserves work, avoids duplicate workers, resumes next authorized action |
 
-Initial executed checks, dry runs and remaining gaps are documented in [the validation report](2026-10-13.md). No full cross-harness result is claimed. Add dated execution reports as further scenarios are exercised.
+Initial checks are in [the October 13 report](2026-10-13.md). Executed Claude/Codex handoffs, fixes, policy dry runs and remaining limits are in [the October 14 cross-harness report](2026-10-14.md). These bounded results do not certify every harness or a complete production application.

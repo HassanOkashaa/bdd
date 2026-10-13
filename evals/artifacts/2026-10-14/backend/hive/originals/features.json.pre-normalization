@@ -1,0 +1,28 @@
+{
+  "features": [
+    {
+      "id": "F01",
+      "description": "Saving an exactly equal reading-list URL does not append a duplicate",
+      "depends_on": [],
+      "acceptance": [
+        "An exactly equal URL is not appended twice (test_duplicate_is_not_added)",
+        "A new URL is appended (test_new_url_is_added)",
+        "A duplicate Unicode URL behaves the same way (test_exact_equality_and_unicode)",
+        "test_reading_list.py is unchanged; notes.txt is byte-for-byte unchanged",
+        "No URL normalization, network requests, new dependencies or unrelated features"
+      ],
+      "status": "verifying",
+      "passes": false,
+      "evidence": [
+        {
+          "criteria": "all three unittest acceptance cases",
+          "command": "python3 -m unittest -v",
+          "result": "3 tests ok; Ran 3 tests ... OK (exit code inferred 0, not printed)",
+          "revision": "66f4268 + uncommitted working tree",
+          "report": "hive/reports/F01-verification.md"
+        }
+      ],
+      "blocked_reason": "Independent review is missing: no fresh reviewer is available in this session. Baseline exit 1 is only user-reported; ../logs/baseline.txt was unreadable to me."
+    }
+  ]
+}

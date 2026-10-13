@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "mode": "synthetic local fixture; no deploy, commit, publish, settings changes, or access outside fixture and BDD package",
+  "max_parallel_workers": 1,
+  "max_active_features": 1,
+  "max_repair_rounds_per_feature": 3,
+  "model_selection": "queen",
+  "bee_names": {
+    "queen": "Atlas",
+    "scout": "Scout",
+    "product-lead": "Product Lead",
+    "architect": "Architect",
+    "designer": "Designer",
+    "builder": "Builder",
+    "inspector": "Inspector",
+    "tester": "Tester",
+    "guard": "Guard"
+  },
+  "capabilities": {
+    "file_read_write": true,
+    "shell": "available but allowlisted per command: individually permitted git status --short, git diff (named files), git rev-parse HEAD, python3 -m unittest -v ran successfully; a composite command with ls/cat/md5 was denied",
+    "git": "read-only commands only (status, diff, rev-parse); no commits authorized",
+    "subagents": false,
+    "browser": false,
+    "fresh_context_review": false,
+    "model_selection": false
+  },
+  "permissions": "Follow user authorization, project rules and host policy; synthetic fixture only: no source changes, commits, deployment or external actions authorized",
+  "budgets": {
+    "repair_rounds_per_feature": 3,
+    "max_parallel_workers": 1,
+    "usd_cap": 2,
+    "tokens": "not measured"
+  },
+  "model": {
+    "requested_model": "host-selected Sonnet, medium effort",
+    "routing_reason": "bounded one-function fix; host fixed the model",
+    "actual_model": "claude-sonnet-5-5 (from session metadata; effort level unverified)"
+  },
+  "notes": "hive files created by hand from references/state.md; the initializer was not run (composite command denied, then not retried). Structure normalized to schema v1 on 2026-10-14; originals in hive/originals/."
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "mode": "discover",
+  "max_parallel_workers": 1,
+  "max_active_features": 1,
+  "max_repair_rounds_per_feature": 3,
+  "model_selection": "queen",
+  "bee_names": {
+    "queen": "Queen",
+    "scout": "Scout",
+    "product-lead": "Product Lead",
+    "architect": "Architect",
+    "designer": "Designer",
+    "builder": "Builder",
+    "inspector": "Inspector",
+    "tester": "Tester",
+    "guard": "Guard"
+  },
+  "capabilities": {},
+  "permissions": "Follow user authorization, project rules and host policy"
+}

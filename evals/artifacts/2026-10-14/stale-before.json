@@ -1,0 +1,23 @@
+[
+  {
+    "id": "F01",
+    "description": "Correct total",
+    "depends_on": [],
+    "acceptance": [
+      "total([2, 3]) equals 5"
+    ],
+    "status": "passed",
+    "passes": true,
+    "evidence": [
+      {
+        "criterion": "total([2, 3]) equals 5",
+        "command": "python3 -m unittest -v",
+        "result": "pass",
+        "revision": "old-missing-revision",
+        "report": "hive/reports/missing.md"
+      }
+    ],
+    "blocked_reason": null,
+    "repair_rounds_used": 3
+  }
+]

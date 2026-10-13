@@ -1,0 +1,33 @@
+[
+  {
+    "id": "F01",
+    "description": "Saving an exactly equal reading-list URL does not append a duplicate",
+    "depends_on": [],
+    "acceptance": [
+      "An exactly equal URL is not appended twice (test_duplicate_is_not_added)",
+      "A new URL is appended (test_new_url_is_added)",
+      "A duplicate Unicode URL behaves the same way (test_exact_equality_and_unicode)",
+      "test_reading_list.py is unchanged; notes.txt is byte-for-byte unchanged",
+      "No URL normalization, network requests, new dependencies or unrelated features"
+    ],
+    "status": "passed",
+    "passes": true,
+    "evidence": [
+      {
+        "criterion": "all three unittest acceptance cases",
+        "command": "python3 -m unittest -v",
+        "result": "3 tests ok; Ran 3 tests ... OK (exit code inferred 0, not printed)",
+        "revision": "66f4268 + uncommitted working tree",
+        "report": "hive/reports/F01-verification.md"
+      },
+      {
+        "criterion": "All approved acceptance and independent review",
+        "command": "python3 -m unittest -v; reviewed-source digest comparison; exact notes-byte comparison",
+        "result": "3 tests pass, exit 0; reviewed code unchanged; unrelated draft preserved",
+        "revision": "01018395781b04c56483d216aec4b170ee1334e1",
+        "report": "hive/reports/integrated-check.md"
+      }
+    ],
+    "blocked_reason": null
+  }
+]
