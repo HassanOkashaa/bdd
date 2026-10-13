@@ -18,10 +18,10 @@ The portable contract is Markdown instructions plus project files. Native skill 
 
 Replace the path with your clone location:
 
-> Read `/path/to/hive-driven-development/SKILL.md` and use it for this project. Start with my goal and the project's existing instructions. Discover your actual capabilities, initialize durable state without overwriting anything, and lead me through the applicable gates.
+> Read `/path/to/bdd/SKILL.md` and use it for this project. Start with my goal and the project's existing instructions. Discover your actual capabilities, initialize durable state without overwriting anything, and lead me through the applicable gates.
 
 ## Resume on another harness
 
-> Read this project's instructions and `hive/progress.md`, `hive/features.json`, `hive/approvals.md`, and `hive/config.json`, then read `/path/to/hive-driven-development/SKILL.md`. Reconcile the working tree, active workers and reports. Resume the next authorized action without repeating approved work or inventing missing verification.
+> Read this project's instructions and `hive/progress.md`, `hive/features.json`, `hive/approvals.md`, and `hive/config.json`, then read `/path/to/bdd/SKILL.md`. Reconcile the working tree, active workers and reports. Resume the next authorized action without repeating approved work or inventing missing verification.
 
 Copy or attach the linked references if the host cannot open relative files. Never overwrite global `AGENTS.md`, `CLAUDE.md`, or editor rules to install this package. A project may add a short pointer to the skill by explicit choice.

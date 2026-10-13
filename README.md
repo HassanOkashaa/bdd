@@ -1,4 +1,4 @@
-# Hive-Driven Development 🐝
+# Bee Driven Development (BDD) 🐝
 
 **Give your AI coding project a team, a memory, and a definition of done.**
 
@@ -13,14 +13,14 @@ Use it with one coding agent or a multi-agent harness. No framework, API key, pa
 **1. Clone the skill.**
 
 ```sh
-git clone https://github.com/HassanOkashaa/hive-driven-development.git
+git clone https://github.com/HassanOkashaa/bdd.git
 ```
 
 **2. Open your project in your AI coding assistant and paste this.** Replace the path and describe your idea:
 
 ```text
-Read /absolute/path/to/hive-driven-development/SKILL.md and use
-Hive-Driven Development for this project.
+Read /absolute/path/to/bdd/SKILL.md and use
+Bee Driven Development (BDD) for this project.
 
 My goal: [what I want people to be able to do].
 Start by inspecting the project and your available capabilities.
@@ -32,7 +32,7 @@ Guide me through the applicable gates, then build within the approved scope.
 The agent can initialize state for you. To do it yourself:
 
 ```sh
-python3 /absolute/path/to/hive-driven-development/scripts/init_hive.py /absolute/path/to/your-project
+python3 /absolute/path/to/bdd/scripts/init_hive.py /absolute/path/to/your-project
 ```
 
 Your project directory must already exist. Setup creates only `hive/`, refuses existing state, and does not install packages, change source files, commit, or contact a service.
@@ -40,7 +40,7 @@ Your project directory must already exist. Setup creates only `hive/`, refuses e
 Optional names can also be supplied directly during setup:
 
 ```sh
-python3 /absolute/path/to/hive-driven-development/scripts/init_hive.py /absolute/path/to/your-project --bee-name 'queen=Atlas' --bee-name 'builder=Patch'
+python3 /absolute/path/to/bdd/scripts/init_hive.py /absolute/path/to/your-project --bee-name 'queen=Atlas' --bee-name 'builder=Patch'
 ```
 
 These are examples, not defaults. Custom names appear alongside roles, such as `Atlas (Queen)`. Names never change permissions or the Queen's model-selection responsibility. You can rename bees later through the assistant without resetting state.
@@ -106,7 +106,7 @@ These are capability-based usage paths, not claims that every named product/vers
 Open the same project in the next assistant and paste:
 
 ```text
-Read /absolute/path/to/hive-driven-development/SKILL.md and this project's
+Read /absolute/path/to/bdd/SKILL.md and this project's
 hive/progress.md, hive/features.json, hive/approvals.md and hive/config.json.
 Reconcile them with the actual repository and active work, then resume
 the next authorized action. Preserve existing changes and approvals.

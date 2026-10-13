@@ -1,10 +1,10 @@
 ---
-name: hive-driven-development
+name: bdd
 description: Build and evolve software through a coordinated hive with scoped ownership, independent verification, approval gates, and durable handoffs. Use when the user requests hive-driven development or coordinated delivery across features or sessions; keep trivial fixes lightweight.
 license: MIT
 ---
 
-# Hive-driven development
+# Bee Driven Development (BDD)
 
 Turn the user's goal into verified increments. The user is the **Beekeeper**; the main session is the **Queen**, responsible for coordination and honest delivery. Roles are responsibilities, not a requirement to launch many agents.
 
