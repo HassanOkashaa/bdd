@@ -1,6 +1,6 @@
 # Roles and delegation contracts
 
-Use the fewest roles that provide distinct value. Names are optional and customizable.
+Use the fewest roles that provide distinct value. Names are optional and customizable. Offer naming once at initial setup, before assigning bees. Default to the role names below, never names from the originating project. Save choices by stable role ID in `config.json` under `bee_names`. Accept partial customization and keep unspecified roles at their defaults. Use “Custom name (Role)” in updates; multiple builders also carry their feature/area label. Renaming does not change responsibilities, ownership, approvals or model routing.
 
 | Role | Responsibility | Writes |
 |---|---|---|

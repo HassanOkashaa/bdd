@@ -2,7 +2,7 @@
 
 The initializer creates `hive/` once and refuses to overwrite it. Templates are empty on purpose: the agent fills them from the user's project after intake. They are not an approved plan.
 
-- `config.json`: budgets, actual host capabilities and operating mode. Three repair rounds per feature and one worker at a time are defaults; adjust to the project and host.
+- `config.json`: budgets, actual host capabilities, operating mode and persistent `bee_names` keyed by stable role IDs. Default names are roles; optional custom names are display labels only. Three repair rounds per feature and one worker at a time are defaults; adjust to the project and host.
 - `features.json`: ordered feature ledger. Coordinator-owned, not a substitute for approval.
 - `approvals.md`: gate, status, scope/version, artifact reference, exact user decision and date. Record exclusions and explicit waivers here. Pending is never approval.
 - `progress.md`: append checkpoints: completed work, current revision, verification, blockers, live resources, next action.

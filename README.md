@@ -6,7 +6,7 @@ A portable skill for turning a product idea into small, verified increments. You
 
 Use it with one coding agent or a multi-agent harness. No framework, API key, paid service, or runtime dependency is required to read the skill. The optional setup command uses Python 3.9+.
 
-> Early release. The setup tooling is tested; cross-harness delivery quality is not yet benchmarked. “Harness-agnostic” means portable instructions and state, not identical capabilities in every assistant.
+> Early release. Setup tooling and a synthetic backend delivery have been tested, including independent review. Full cross-harness delivery quality is not yet benchmarked. See [validation results and limitations](evals/2026-10-13.md). “Harness-agnostic” means portable instructions and state, not identical capabilities in every assistant.
 
 ## Start in three steps
 
@@ -27,7 +27,7 @@ Start by inspecting the project and your available capabilities.
 Guide me through the applicable gates, then build within the approved scope.
 ```
 
-**3. Review the proposed direction and plan.** After approval, the agent works through verified features and keeps a handoff in your project. It pauses for decisions or missing capabilities that actually block delivery.
+**3. Name your bees, or skip and use role names.** The assistant offers this once at setup. Name any roles you like; unnamed roles stay Queen, Builder, Inspector, Tester, and so on. Your choices are saved for the next session. Then review the proposed direction and plan. After approval, the agent works through verified features and keeps a handoff in your project. It pauses for decisions or missing capabilities that actually block delivery.
 
 The agent can initialize state for you. To do it yourself:
 
@@ -36,6 +36,14 @@ python3 /absolute/path/to/hive-driven-development/scripts/init_hive.py /absolute
 ```
 
 Your project directory must already exist. Setup creates only `hive/`, refuses existing state, and does not install packages, change source files, commit, or contact a service.
+
+Optional names can also be supplied directly during setup:
+
+```sh
+python3 /absolute/path/to/hive-driven-development/scripts/init_hive.py /absolute/path/to/your-project --bee-name 'queen=Atlas' --bee-name 'builder=Patch'
+```
+
+These are examples, not defaults. Custom names appear alongside roles, such as `Atlas (Queen)`. Names never change permissions or the Queen's model-selection responsibility. You can rename bees later through the assistant without resetting state.
 
 ## What you get
 
@@ -147,7 +155,7 @@ Run the dependency-free setup tests:
 python3 -m unittest discover -s tests -v
 ```
 
-The tests cover safe initialization, existing-state refusal, invalid targets and concurrent initialization. They do not establish the quality of an LLM's decisions. [Behavioral evaluation scenarios](evals/scenarios.md) define the separate checks needed for a harness compatibility claim.
+The 11 tests cover safe initialization, existing-state refusal, invalid targets, concurrent initialization and optional bee naming. They do not establish the quality of an LLM's decisions. [Behavioral evaluation scenarios](evals/scenarios.md) define the separate checks needed for a harness compatibility claim.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for changes and reporting. Keep the core portable, use synthetic examples, and include observed evidence for any compatibility claim.
 

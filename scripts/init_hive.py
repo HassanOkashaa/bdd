@@ -4,9 +4,30 @@ import argparse
 import json
 from pathlib import Path
 import sys
+import unicodedata
+
+DEFAULT_NAMES = {
+    "queen": "Queen", "scout": "Scout", "product-lead": "Product Lead",
+    "architect": "Architect", "designer": "Designer", "builder": "Builder",
+    "inspector": "Inspector", "tester": "Tester", "guard": "Guard",
+}
 
 
-def initialize(project):
+def parse_names(values):
+    names = dict(DEFAULT_NAMES)
+    for value in values:
+        role, separator, name = value.partition("=")
+        role, name = role.strip(), name.strip()
+        if not separator or role not in DEFAULT_NAMES:
+            raise ValueError("Use --bee-name ROLE=NAME; roles: " + ", ".join(DEFAULT_NAMES))
+        if not name or len(name) > 64 or any(unicodedata.category(c).startswith("C") for c in name):
+            raise ValueError("Bee names must be 1–64 characters without control characters")
+        names[role] = name
+    return names
+
+
+def initialize(project, bee_names=()):
+    names = parse_names(bee_names)
     project = Path(project).expanduser().resolve(strict=True)
     if not project.is_dir():
         raise NotADirectoryError(f"Not a project directory: {project}")
@@ -21,6 +42,7 @@ def initialize(project):
         "max_active_features": 1,
         "max_repair_rounds_per_feature": 3,
         "model_selection": "queen",
+        "bee_names": names,
         "capabilities": {},
         "permissions": "Follow user authorization, project rules and host policy",
     }
@@ -45,13 +67,15 @@ def initialize(project):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("project", help="Existing project directory; hive/ must not exist")
+    parser.add_argument("--bee-name", action="append", default=[], metavar="ROLE=NAME",
+                        help="Optional display name; repeat for more roles. Defaults to role names.")
     args = parser.parse_args()
     try:
-        hive = initialize(args.project)
+        hive = initialize(args.project, args.bee_name)
     except FileExistsError:
         print("Refusing to overwrite existing hive/ state. Read it and resume, or choose another project.", file=sys.stderr)
         return 2
-    except (OSError, RuntimeError) as exc:
+    except (OSError, RuntimeError, ValueError) as exc:
         print(f"Cannot initialize hive: {exc}", file=sys.stderr)
         return 2
     print(f"Created {hive}\nNext: ask your assistant to read SKILL.md and inspect this project.")

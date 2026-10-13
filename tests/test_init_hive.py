@@ -31,10 +31,32 @@ class InitHiveTests(unittest.TestCase):
         self.assertEqual(json.loads((hive / "features.json").read_text()), [])
         config = json.loads((hive / "config.json").read_text())
         self.assertEqual(config["model_selection"], "queen")
+        self.assertEqual(config["bee_names"], MODULE.DEFAULT_NAMES)
         self.assertEqual(config["capabilities"], {})
         self.assertEqual(config["max_parallel_workers"], 1)
         self.assertTrue(all((hive / name).is_dir() for name in ("briefs", "reports", "research")))
         self.assertEqual((self.project / "source.txt").read_bytes(), b"existing work\x00\xff")
+
+    def test_partial_custom_names_keep_role_defaults(self):
+        MODULE.initialize(self.project, ["queen=أطلس", "builder=Patch"])
+        config = json.loads((self.project / "hive" / "config.json").read_text())
+        self.assertEqual(config["bee_names"]["queen"], "أطلس")
+        self.assertEqual(config["bee_names"]["builder"], "Patch")
+        self.assertEqual(config["bee_names"]["inspector"], "Inspector")
+        self.assertEqual(config["model_selection"], "queen")
+
+    def test_invalid_names_rejected_before_any_write(self):
+        for value in ["unknown=Name", "queen=", "queen=Line\nBreak", "queen", "queen=" + "x" * 65]:
+            with self.subTest(value=value):
+                with self.assertRaises(ValueError):
+                    MODULE.initialize(self.project, [value])
+                self.assertFalse((self.project / "hive").exists())
+
+    def test_cli_accepts_custom_name(self):
+        result = subprocess.run([sys.executable, str(SCRIPT), str(self.project), "--bee-name", "queen=Atlas"], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        config = json.loads((self.project / "hive" / "config.json").read_text())
+        self.assertEqual(config["bee_names"]["queen"], "Atlas")
 
     def test_reinitialization_preserves_all_state(self):
         self.assertEqual(self.run_cli().returncode, 0)
