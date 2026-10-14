@@ -1,0 +1,3 @@
+I can’t give a PASS or findings yet: the project path wasn’t provided, and the CLI opened in <user-home> rather than the project. I have not read project files, run its tests or validator, or changed anything.
+
+Please provide the project’s absolute path. I’ll then perform the read-only inspection and report the commands, exit codes, acceptance findings, hash check, and review-status assessment.

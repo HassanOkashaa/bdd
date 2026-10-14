@@ -1,0 +1,9 @@
+PASS — independent read-only Inspector review of F01. The implementation and tests satisfy all five approved criteria: first-seen order, empty and unique inputs, adjacent and separated duplicates, exact-string comparison, and iterable input with a fresh list and unchanged input list. Independent contract probes also passed.
+
+From the specified project directory:
+- `PYTHONDONTWRITEBYTECODE=1 python3 -B -m unittest discover -v` — exit 0; 9 tests passed.
+- `PYTHONDONTWRITEBYTECODE=1 python3 -B <loaded BDD skill>/scripts/validate_hive.py .` — exit 0; structure valid.
+- `shasum -a 256 -c hive/reports/notes-before.sha256` — exit 0; `notes.txt` matches its recorded before hash. The code and test artifact hashes also match their record.
+- Independent Python contract probes — exit 0.
+
+The latest Gate 1 entry explicitly approves plan v1; the earlier pending entry is historical. F01’s `blocked`/`passes: false` status honestly reflected the missing independent review before this check. I made no state changes: the coordinator must record this review and recheck the same artifacts before marking F01 passed. Gate 2 remains unreached. There is no commit/HEAD, so the reviewed target is identified by the matching file hashes, not a Git revision.

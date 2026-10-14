@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "mode": "blocked-independent-review",
+  "max_parallel_workers": 1,
+  "max_active_features": 1,
+  "max_repair_rounds_per_feature": 3,
+  "model_selection": "queen",
+  "bee_names": {
+    "queen": "Queen",
+    "scout": "Scout",
+    "product-lead": "Product Lead",
+    "architect": "Architect",
+    "designer": "Designer",
+    "builder": "Builder",
+    "inspector": "Inspector",
+    "tester": "Tester",
+    "guard": "Guard"
+  },
+  "capabilities": {
+    "file_access": "Project and skill files read; hive setup writes succeeded. Reads restricted by user to project and skill files.",
+    "execution": "Shell and Python execution observed working.",
+    "git": "Read-only status works; main has no commits. Commit operations prohibited.",
+    "browser": "No rendered browser capability established; not needed for backend-only setup.",
+    "fresh_context_workers": "Delegation tools supplied by host, but user prohibits workers; none launched.",
+    "model_selection": "Host exposes worker model options, unused because delegation is prohibited. Current model identity not asserted; no override applied.",
+    "native_skill_catalog": "bdd supplied in developer native skills catalog at r8/bdd/SKILL.md.",
+    "background_persistence": "Durable files only; no background work scheduled."
+  },
+  "permissions": "User approved hive/plan.md v1 and F01. Write only url_helpers.py, test_url_helpers.py and hive evidence. Preserve notes.txt exactly. No workers, commits, publishing, or reads outside project and its skill. Keep feature unpassed pending independent review.",
+  "naming_status": "User skipped custom names and confirmed role defaults.",
+  "authorized_worker_count": 0,
+  "budget_notes": "One proposed feature; three repair rounds maximum after approval. max_parallel_workers=1 is a schema capacity ceiling, not permission to launch workers. No paid services or dependencies planned. Tokens not measured."
+}

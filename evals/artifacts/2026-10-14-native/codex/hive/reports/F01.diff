@@ -1,0 +1,89 @@
+--- /dev/null
++++ b/url_helpers.py
+@@ -0,0 +1,14 @@
++"""Helpers for URL strings without validation or normalization."""
++
++from collections.abc import Iterable
++
++
++def deduplicate_urls(urls: Iterable[str]) -> list[str]:
++    """Return a new list of exact URL strings in first-seen order."""
++    seen: set[str] = set()
++    result: list[str] = []
++    for url in urls:
++        if url not in seen:
++            seen.add(url)
++            result.append(url)
++    return result
+--- /dev/null
++++ b/test_url_helpers.py
+@@ -0,0 +1,69 @@
++import unittest
++
++from url_helpers import deduplicate_urls
++
++
++class DeduplicateUrlsTests(unittest.TestCase):
++    def test_first_seen_order(self):
++        self.assertEqual(
++            deduplicate_urls(["https://a.test", "https://b.test", "https://a.test"]),
++            ["https://a.test", "https://b.test"],
++        )
++
++    def test_empty_iterables(self):
++        for urls in ([], (), iter(())):
++            with self.subTest(input_type=type(urls).__name__):
++                result = deduplicate_urls(urls)
++                self.assertEqual(result, [])
++                self.assertIsInstance(result, list)
++                self.assertIsNot(result, urls)
++
++    def test_unique_order(self):
++        urls = ["https://z.test", "https://a.test", "https://m.test"]
++        result = deduplicate_urls(urls)
++        self.assertEqual(result, urls)
++        self.assertIsNot(result, urls)
++
++    def test_all_identical(self):
++        self.assertEqual(deduplicate_urls(["https://a.test"] * 4), ["https://a.test"])
++
++    def test_adjacent_and_separated(self):
++        self.assertEqual(
++            deduplicate_urls(["b", "b", "a", "b", "c", "a", "c", "c"]),
++            ["b", "a", "c"],
++        )
++
++    def test_exact_strings(self):
++        variants = [
++            "https://a.test",
++            "https://A.test",
++            "https://a.test/",
++            "https://a.test#one",
++            "https://a.test#two",
++            "https://a.test?a=1&b=2",
++            "https://a.test?b=2&a=1",
++        ]
++        self.assertEqual(deduplicate_urls(variants + variants[::-1]), variants)
++
++    def test_generator(self):
++        urls = (url for url in ["https://b.test", "https://a.test", "https://b.test"])
++        result = deduplicate_urls(urls)
++        self.assertIsInstance(result, list)
++        self.assertEqual(result, ["https://b.test", "https://a.test"])
++
++    def test_tuple(self):
++        self.assertEqual(deduplicate_urls(("b", "a", "b")), ["b", "a"])
++
++    def test_new_list_and_input_unchanged(self):
++        urls = ["https://b.test", "https://a.test", "https://b.test"]
++        original = urls.copy()
++        result = deduplicate_urls(urls)
++        self.assertIsInstance(result, list)
++        self.assertIsNot(result, urls)
++        self.assertEqual(urls, original)
++        result.append("https://c.test")
++        self.assertEqual(urls, original)
++
++
++if __name__ == "__main__":
++    unittest.main()

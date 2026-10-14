@@ -1,0 +1,5 @@
+Would you like to name your bees, or use role names such as Queen, Builder, Inspector and Tester? Naming is optional; role names are the default.
+
+The native BDD skill was preloaded and is available in this session. I can read the supplied skill and help shape the backend project in conversation. No shell, project-file, Git, browser, fresh-worker, or model-selection tool is available to me here, so I cannot verify the synthetic project or claim an independent review. I have not written files or run commands.
+
+Because this is backend-only, Gate 0 design review does not apply. The next gate is Gate 1: you review a concrete plan, acceptance criteria, and budgets before any build. This setup grants no build, worker, commit, or release authorization.

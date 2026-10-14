@@ -1,0 +1,54 @@
+[
+  {
+    "id": "F01",
+    "description": "Remove duplicate URL strings while preserving first-seen order",
+    "depends_on": [],
+    "acceptance": [
+      "Exact duplicate URL strings are removed, preserving the first occurrence: [\"https://a.test\", \"https://b.test\", \"https://a.test\"] yields [\"https://a.test\", \"https://b.test\"].",
+      "An empty iterable yields an empty list; already unique input retains its order.",
+      "All-identical input yields one URL; adjacent and separated duplicates behave identically.",
+      "Comparison uses exact strings: case, trailing slashes, fragments and query ordering are not normalized.",
+      "The helper accepts an iterable of strings, including a one-pass generator, returns a new list, and does not mutate an input list."
+    ],
+    "status": "blocked",
+    "passes": false,
+    "evidence": [
+      {
+        "criterion": "Exact duplicate URL strings are removed, preserving the first occurrence: [\"https://a.test\", \"https://b.test\", \"https://a.test\"] yields [\"https://a.test\", \"https://b.test\"].",
+        "command": "python3 -B -m unittest discover -v",
+        "result": "9 tests passed, exit 0; independent review pending",
+        "revision": "uncommitted main (no HEAD); url_helpers.py sha256:a657516c2eecf5d4019b2b2258d3258fd89749f3e24491d8f5f3560c19ce884f; test_url_helpers.py sha256:9879b4f51b9d042cd5a985435e6af5587cd5eafa9667dcde1aab6b14f95738eb",
+        "report": "hive/reports/F01-verification.md"
+      },
+      {
+        "criterion": "An empty iterable yields an empty list; already unique input retains its order.",
+        "command": "python3 -B -m unittest discover -v",
+        "result": "9 tests passed, exit 0; independent review pending",
+        "revision": "uncommitted main (no HEAD); url_helpers.py sha256:a657516c2eecf5d4019b2b2258d3258fd89749f3e24491d8f5f3560c19ce884f; test_url_helpers.py sha256:9879b4f51b9d042cd5a985435e6af5587cd5eafa9667dcde1aab6b14f95738eb",
+        "report": "hive/reports/F01-verification.md"
+      },
+      {
+        "criterion": "All-identical input yields one URL; adjacent and separated duplicates behave identically.",
+        "command": "python3 -B -m unittest discover -v",
+        "result": "9 tests passed, exit 0; independent review pending",
+        "revision": "uncommitted main (no HEAD); url_helpers.py sha256:a657516c2eecf5d4019b2b2258d3258fd89749f3e24491d8f5f3560c19ce884f; test_url_helpers.py sha256:9879b4f51b9d042cd5a985435e6af5587cd5eafa9667dcde1aab6b14f95738eb",
+        "report": "hive/reports/F01-verification.md"
+      },
+      {
+        "criterion": "Comparison uses exact strings: case, trailing slashes, fragments and query ordering are not normalized.",
+        "command": "python3 -B -m unittest discover -v",
+        "result": "9 tests passed, exit 0; independent review pending",
+        "revision": "uncommitted main (no HEAD); url_helpers.py sha256:a657516c2eecf5d4019b2b2258d3258fd89749f3e24491d8f5f3560c19ce884f; test_url_helpers.py sha256:9879b4f51b9d042cd5a985435e6af5587cd5eafa9667dcde1aab6b14f95738eb",
+        "report": "hive/reports/F01-verification.md"
+      },
+      {
+        "criterion": "The helper accepts an iterable of strings, including a one-pass generator, returns a new list, and does not mutate an input list.",
+        "command": "python3 -B -m unittest discover -v",
+        "result": "9 tests passed, exit 0; independent review pending",
+        "revision": "uncommitted main (no HEAD); url_helpers.py sha256:a657516c2eecf5d4019b2b2258d3258fd89749f3e24491d8f5f3560c19ce884f; test_url_helpers.py sha256:9879b4f51b9d042cd5a985435e6af5587cd5eafa9667dcde1aab6b14f95738eb",
+        "report": "hive/reports/F01-verification.md"
+      }
+    ],
+    "blocked_reason": "Implemented and 9 tests pass; independent correctness review unavailable in this session because workers are prohibited. Review packet prepared for a fresh session or human."
+  }
+]

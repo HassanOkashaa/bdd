@@ -1,0 +1,14 @@
+test_adjacent_and_separated (test_url_helpers.DeduplicateUrlsTests.test_adjacent_and_separated) ... ok
+test_all_identical (test_url_helpers.DeduplicateUrlsTests.test_all_identical) ... ok
+test_empty_iterables (test_url_helpers.DeduplicateUrlsTests.test_empty_iterables) ... ok
+test_exact_strings (test_url_helpers.DeduplicateUrlsTests.test_exact_strings) ... ok
+test_first_seen_order (test_url_helpers.DeduplicateUrlsTests.test_first_seen_order) ... ok
+test_generator (test_url_helpers.DeduplicateUrlsTests.test_generator) ... ok
+test_new_list_and_input_unchanged (test_url_helpers.DeduplicateUrlsTests.test_new_list_and_input_unchanged) ... ok
+test_tuple (test_url_helpers.DeduplicateUrlsTests.test_tuple) ... ok
+test_unique_order (test_url_helpers.DeduplicateUrlsTests.test_unique_order) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+OK

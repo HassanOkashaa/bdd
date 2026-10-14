@@ -1,0 +1,29 @@
+{
+  "name": "bdd",
+  "description": "Build and evolve software through a coordinated hive with scoped ownership, independent verification, approval gates, and durable handoffs. Use for Bee Driven Development (BDD), a development hive, or coordinated delivery across features or sessions; a request for Gherkin or behavior-driven tests alone does not invoke this workflow.",
+  "source": "openclaw-workspace",
+  "bundled": false,
+  "filePath": "<evaluation-root>/openclaw/skills/bdd/SKILL.md",
+  "baseDir": "<evaluation-root>/openclaw/skills/bdd",
+  "skillKey": "bdd",
+  "always": false,
+  "disabled": false,
+  "blockedByAllowlist": false,
+  "eligible": true,
+  "requirements": {
+    "bins": [],
+    "anyBins": [],
+    "env": [],
+    "config": [],
+    "os": []
+  },
+  "missing": {
+    "bins": [],
+    "anyBins": [],
+    "env": [],
+    "config": [],
+    "os": []
+  },
+  "configChecks": [],
+  "install": []
+}

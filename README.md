@@ -6,7 +6,7 @@ A portable skill for turning a product idea into small, verified increments. You
 
 Use it with one coding agent or a multi-agent harness. No framework, API key, paid service, or runtime dependency is required to read the skill. The optional setup command uses Python 3.9+.
 
-> Early release. Tested with Claude Code 2.1.284 and Codex desktop on synthetic setup, regression, handoff and resume scenarios. Native Claude `/bdd` activation and live Sonnet/Opus selection were verified. See [results, fixes and remaining limits](evals/2026-10-14.md). Portability does not mean identical capabilities in every harness.
+> Early release. Native Claude Code and Codex CLI activation, Hermes preloading, and bounded backend/handoff scenarios have been exercised. OpenClaw discovery and skill reading passed, but its local-model behavior checks remain incomplete. See [native-harness results](evals/2026-10-14-native-harnesses.md) and [earlier cross-harness evidence](evals/2026-10-14.md). Portability does not mean identical capabilities in every harness.
 
 ## Start in three steps
 
@@ -99,9 +99,16 @@ The package follows the [Agent Skills format](https://agentskills.io/specificati
 | A single-agent setup | Build sequentially, then use a fresh session or a human for independent review |
 | Chat-only assistant | Supply the skill and relevant files; run checks and persist state yourself |
 
-Claude Code and Codex desktop have been exercised in bounded cross-harness tests; the other named products remain untested. See [the validation report](evals/2026-10-14.md) and [native Claude setup / portability](references/portability.md).
+| Native setup checked | Observed result |
+|---|---|
+| Codex CLI 0.154.0 | `.agents/skills/bdd` + `$bdd`: setup, saved-state resume and nine backend behavior tests passed |
+| Claude Code 2.1.284 | `.claude/skills/bdd` + `/bdd`: setup, resume and cross-harness checks passed in the earlier evaluation |
+| Hermes Agent 0.21.1, local build | Active profile's `skills/bdd` + `--skills bdd`: preloading and setup conversation passed |
+| OpenClaw 2026.3.13 | Workspace `skills/bdd`: discovered and read; bounded local-model behavior checks incomplete |
 
-For native Claude Code use, clone into an unused `.claude/skills/bdd` directory inside your project, start a new normal session, and invoke `/bdd`. Restricted or safe modes can omit custom skills; use the explicit-file prompt when discovery is unavailable.
+Cursor, Gemini CLI and other named integrations remain untested. The machine inventory and precise limitations are in the [native-harness report](evals/2026-10-14-native-harnesses.md). Follow the [tested native setup instructions](references/portability.md) for your host.
+
+For native Codex use, clone into an unused `.agents/skills/bdd` directory inside your Git project and invoke `$bdd` from that project. For native Claude Code use, clone into an unused `.claude/skills/bdd` directory inside your project, start a new normal session, and invoke `/bdd`. Restricted or safe modes can omit custom skills; use the explicit-file prompt when discovery is unavailable.
 
 ## Continue tomorrow, or switch assistants
 

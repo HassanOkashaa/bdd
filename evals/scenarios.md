@@ -16,3 +16,5 @@ Use a disposable synthetic repository. Do not use production systems. Give the a
 | Harness switch | Pending worktree, live worker and incomplete reports | Preserves work, avoids duplicate workers, resumes next authorized action |
 
 Initial checks are in [the October 13 report](2026-10-13.md). Executed Claude/Codex handoffs, fixes, policy dry runs and remaining limits are in [the October 14 cross-harness report](2026-10-14.md). These bounded results do not certify every harness or a complete production application.
+
+Native Codex setup/resume, Hermes preloading and independent review, OpenClaw partial results, and the available-machine inventory are in [the native-harness follow-up](2026-10-14-native-harnesses.md).

@@ -1,0 +1,55 @@
+{
+  "payloads": [
+    {
+      "text": "Request timed out before a response was generated. Please try again, or increase `agents.defaults.timeoutSeconds` in your config.",
+      "mediaUrl": null
+    }
+  ],
+  "aborted": true,
+  "agentMeta": {
+    "provider": "ollama",
+    "model": "qwen3.5:2b",
+    "usage": {
+      "input": 3223,
+      "output": 228,
+      "total": 3451
+    },
+    "lastCallUsage": {
+      "input": 3223,
+      "output": 228,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "total": 3451
+    },
+    "promptTokens": 3223
+  },
+  "bdd_catalog_entry": [
+    {
+      "name": "bdd",
+      "blockChars": 537
+    }
+  ],
+  "tools": [
+    {
+      "name": "read",
+      "summaryChars": 298,
+      "schemaChars": 392,
+      "propertiesCount": 4
+    }
+  ],
+  "tool_evidence": [
+    {
+      "type": "toolCall",
+      "id": "ollama_call_ec996dea-75d0-4f98-bc79-3700bb75bcfd",
+      "name": "read",
+      "arguments": {
+        "path": "<evaluation-root>/openclaw/skills/bdd/SKILL.md"
+      }
+    },
+    {
+      "toolName": "read",
+      "isError": false,
+      "returned_bdd_content": true
+    }
+  ]
+}
